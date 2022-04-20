@@ -24,7 +24,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="dealpushButton">
     <property name="geometry">
      <rect>
       <x>510</x>
@@ -37,7 +37,7 @@
      <string>Deal</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="hitpushButton">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -50,7 +50,7 @@
      <string>Hit</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="doublepushButton">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -63,7 +63,7 @@
      <string>Double</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="staypushButton">
     <property name="geometry">
      <rect>
       <x>390</x>
@@ -76,7 +76,7 @@
      <string>Stay</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="addPlayerpushButton">
     <property name="geometry">
      <rect>
       <x>660</x>
@@ -89,7 +89,7 @@
      <string>Add Player</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="exitpushButton">
     <property name="geometry">
      <rect>
       <x>660</x>
@@ -102,7 +102,7 @@
      <string>Exit</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
+   <widget class="QPushButton" name="betpushButton">
     <property name="geometry">
      <rect>
       <x>510</x>
@@ -115,7 +115,7 @@
      <string>Bet</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_8">
+   <widget class="QPushButton" name="quitpushButton">
     <property name="geometry">
      <rect>
       <x>670</x>
@@ -128,11 +128,11 @@
      <string>Quit</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_9">
+   <widget class="QPushButton" name="redopushButton">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>200</y>
+      <x>670</x>
+      <y>250</y>
       <width>100</width>
       <height>32</height>
      </rect>
@@ -141,10 +141,10 @@
      <string>Redo Turn</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_10">
+   <widget class="QPushButton" name="addMoneypushButton">
     <property name="geometry">
      <rect>
-      <x>670</x>
+      <x>510</x>
       <y>200</y>
       <width>100</width>
       <height>32</height>
@@ -154,17 +154,63 @@
      <string>Add Money</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_11">
+   <widget class="QPushButton" name="insureTurnpushButton">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>270</y>
+      <x>670</x>
+      <y>300</y>
       <width>100</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
      <string>Insure Turn</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="inputBetlineEdit">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>130</y>
+      <width>41</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="inputAddMoneylineEdit">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>200</y>
+      <width>41</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="currentPlayerlabel">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>260</y>
+      <width>141</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Current Player Label</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="notificationlabel">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>390</y>
+      <width>261</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Notification label</string>
     </property>
    </widget>
   </widget>
@@ -174,7 +220,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
