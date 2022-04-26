@@ -1,9 +1,9 @@
 #include "game.h"
-#include "ui_board.h"
+#include "ui_game.h"//.h"
 
 Game::Game(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::Board)
+    , ui(new Ui::Game)
 {
     ui->setupUi(this);
 }
