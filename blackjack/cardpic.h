@@ -26,6 +26,7 @@ class cardPic : public QObject, public QGraphicsPixmapItem
     Q_OBJECT
 public:
     cardPic(Card *card);
+    Card *get_card(){return card_;};
 
 private:
     Card *card_;
