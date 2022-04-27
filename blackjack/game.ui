@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>892</width>
-    <height>645</height>
+    <width>1288</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Board</string>
+   <string>Black Jack</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGraphicsView" name="graphicsView">
@@ -19,16 +19,29 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>500</width>
+      <width>971</width>
       <height>500</height>
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="dealpushButton">
+    <property name="geometry">
+     <rect>
+      <x>1000</x>
+      <y>10</y>
+      <width>100</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Deal</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="hitpushButton">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>530</y>
+      <y>510</y>
       <width>100</width>
       <height>32</height>
      </rect>
@@ -37,11 +50,11 @@
      <string>Hit</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="doublepushButton">
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>530</y>
+      <y>510</y>
       <width>100</width>
       <height>32</height>
      </rect>
@@ -50,11 +63,11 @@
      <string>Double</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="staypushButton">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>530</y>
+      <x>390</x>
+      <y>510</y>
       <width>100</width>
       <height>32</height>
      </rect>
@@ -63,36 +76,10 @@
      <string>Stay</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="addPlayerpushButton">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>10</y>
-      <width>111</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Deal</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_5">
-    <property name="geometry">
-     <rect>
-      <x>770</x>
-      <y>10</y>
-      <width>100</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Exit</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_6">
-    <property name="geometry">
-     <rect>
-      <x>770</x>
+      <x>1150</x>
       <y>60</y>
       <width>100</width>
       <height>32</height>
@@ -102,11 +89,24 @@
      <string>Add Player</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
+   <widget class="QPushButton" name="exitpushButton">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>170</y>
+      <x>1150</x>
+      <y>10</y>
+      <width>100</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Exit</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="betpushButton">
+    <property name="geometry">
+     <rect>
+      <x>1000</x>
+      <y>130</y>
       <width>100</width>
       <height>32</height>
      </rect>
@@ -115,11 +115,11 @@
      <string>Bet</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_8">
+   <widget class="QPushButton" name="quitpushButton">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>170</y>
+      <x>1160</x>
+      <y>130</y>
       <width>100</width>
       <height>32</height>
      </rect>
@@ -128,34 +128,11 @@
      <string>Quit</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QPushButton" name="redopushButton">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>170</y>
-      <width>51</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_9">
-    <property name="geometry">
-     <rect>
-      <x>510</x>
-      <y>230</y>
-      <width>100</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add Money</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_10">
-    <property name="geometry">
-     <rect>
-      <x>760</x>
-      <y>300</y>
+      <x>1160</x>
+      <y>250</y>
       <width>100</width>
       <height>32</height>
      </rect>
@@ -164,11 +141,24 @@
      <string>Redo Turn</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_11">
+   <widget class="QPushButton" name="addMoneypushButton">
     <property name="geometry">
      <rect>
-      <x>760</x>
-      <y>370</y>
+      <x>1000</x>
+      <y>200</y>
+      <width>100</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add Money</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="insureTurnpushButton">
+    <property name="geometry">
+     <rect>
+      <x>1160</x>
+      <y>300</y>
       <width>100</width>
       <height>32</height>
      </rect>
@@ -177,30 +167,50 @@
      <string>Insure Turn</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLineEdit" name="inputBetlineEdit">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>330</y>
-      <width>121</width>
-      <height>16</height>
+      <x>1110</x>
+      <y>130</y>
+      <width>41</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="inputAddMoneylineEdit">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>200</y>
+      <width>41</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="currentPlayerlabel">
+    <property name="geometry">
+     <rect>
+      <x>1010</x>
+      <y>260</y>
+      <width>141</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
      <string>Current Player Label</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="notificationlabel">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>440</y>
-      <width>121</width>
-      <height>16</height>
+      <x>1010</x>
+      <y>390</y>
+      <width>261</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Notification Label</string>
+     <string>Notification label</string>
     </property>
    </widget>
   </widget>
@@ -209,8 +219,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>892</width>
-     <height>24</height>
+     <width>1288</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
