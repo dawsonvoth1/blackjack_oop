@@ -24,6 +24,7 @@ public:
     // MARK - TODO
     void remove_player(Player* p);
 
+private slots:
     void deal();
     void takeTurn(Player* p);
     void hit(Player* p);
@@ -34,10 +35,9 @@ public:
     void exit();
 
 private:
+    const int add_money_amnt = 10;
     std::vector<Player*> players_;
     Board *board_;
-
-private:
     Ui::Game *ui;
     QGraphicsView* view_;
     QGraphicsScene * scene_;
