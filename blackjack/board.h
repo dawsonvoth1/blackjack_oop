@@ -33,13 +33,13 @@ public:
 
     int get_count() { return count_; }
 
+    void shuffle_cards();
     //MARK - TODO
     Card deal_next_card();
-    void shuffle_cards();
 
 private:
     std::vector<Card> dealers_cards_;
-    int num_decks_;
+    const int num_decks_ = 3;
     std::vector<Card> cards_;
     Card top_card_;
     int count_;

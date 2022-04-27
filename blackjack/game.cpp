@@ -24,6 +24,7 @@ Game::Game(QWidget *parent)
     cardPic* p=new cardPic(c);
     scene_->addItem(p);
 
+
 }
 
 Game::~Game()
@@ -40,4 +41,67 @@ void Game::remove_player(Player* p) {
     if (position != players_.end()) {
         players_.erase(position);
     }
+}
+
+/**
+ * @brief Game::deal deal cards to players
+ */
+void Game::deal() {
+
+}
+
+/**
+ * @brief Game::takeTurn player takes a turn
+ * @param p the player
+ */
+void Game::takeTurn(Player* p) {
+
+}
+
+/**
+ * @brief Game::hit the player hits
+ * @param p the player
+ */
+
+void Game::hit(Player* p) {
+
+}
+
+/**
+ * @brief Game::double_bet double a bet into two separate bets
+ * @param p the player
+ */
+void Game::double_bet(Player* p) {
+
+}
+
+/**
+ * @brief Game::stay player chooses to stay
+ * @param p the player
+ */
+void Game::stay(Player *p) {
+
+}
+
+/**
+ * @brief Game::quit the player chooses to quit
+ * @param p the player
+ */
+void Game::quit(Player *p) {
+
+}
+
+/**
+ * @brief Game::addMoney the player chooses to add money
+ * @param p the player
+ */
+void Game::addMoney(Player *p) {
+    p->add_money(add_money_amnt);
+}
+
+/**
+ * @brief Game::exit the player chooses to exit
+ */
+void Game::exit() {
+
 }
