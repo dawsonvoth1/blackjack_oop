@@ -10,12 +10,14 @@ CONFIG += c++17
 
 SOURCES += \
     board.cpp \
+    cardpic.cpp \
     game.cpp \
     main.cpp \
     player.cpp
 
 HEADERS += \
     board.h \
+    cardpic.h \
     game.h \
     player.h
 
@@ -26,3 +28,5 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES +=

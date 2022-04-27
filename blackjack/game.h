@@ -1,9 +1,11 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <QGraphicsView>
 #include <QMainWindow>
 #include "player.h"
 #include "board.h"
+#include "cardpic.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Game; }
@@ -37,5 +39,7 @@ private:
 
 private:
     Ui::Game *ui;
+    QGraphicsView* view_;
+    QGraphicsScene * scene_;
 };
 #endif // GAME_H

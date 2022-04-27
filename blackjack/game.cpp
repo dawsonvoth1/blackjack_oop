@@ -8,6 +8,22 @@ Game::Game(QWidget *parent)
     , ui(new Ui::Game)
 {
     ui->setupUi(this);
+
+    scene_=new QGraphicsScene;
+    view_=ui->graphicsView;
+    view_->setScene(scene_);
+    // make the scene the same size as the view containing it
+    view_->setSceneRect(0,0,view_->frameSize().width(),view_->frameSize().height());
+    // make an outline
+    scene_->addRect(0, 0, view_->frameSize().width(), view_->frameSize().height());
+    Card *c;
+    c->dealt_=false;
+    c->deck_=1;
+    c->suit_=Suit::Club;
+    c->value_=2;
+    cardPic* p=new cardPic(c);
+    scene_->addItem(p);
+
 }
 
 Game::~Game()
