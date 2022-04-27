@@ -16,7 +16,7 @@ Game::Game(QWidget *parent)
     view_->setSceneRect(0,0,view_->frameSize().width(),view_->frameSize().height());
     // make an outline
     scene_->addRect(0, 0, view_->frameSize().width(), view_->frameSize().height());
-    Card *c;
+    Card *c=new Card;
     c->dealt_=false;
     c->deck_=1;
     c->suit_=Suit::Club;

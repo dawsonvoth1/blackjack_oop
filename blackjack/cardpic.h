@@ -6,6 +6,8 @@
 #include <QGraphicsPixmapItem>
 #include <QPixmap>
 #include <QImage>
+#include <QString>
+#include <QDir>
 
 #include <board.h>
 //// Card Suits
