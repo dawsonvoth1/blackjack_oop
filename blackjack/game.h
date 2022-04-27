@@ -26,12 +26,14 @@ public:
 
 private slots:
     void deal();
+
     void takeTurn(Player* p);
     void hit(Player* p);
     void double_bet(Player* p);
     void stay(Player *p);
     void quit(Player *p);
     void addMoney(Player *p);
+
     void exit();
 
 private:

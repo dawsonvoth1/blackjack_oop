@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     board.cpp \
     cardpic.cpp \
+    cardset.cpp \
     game.cpp \
     main.cpp \
     player.cpp
@@ -18,6 +19,7 @@ SOURCES += \
 HEADERS += \
     board.h \
     cardpic.h \
+    cardset.h \
     game.h \
     player.h
 
