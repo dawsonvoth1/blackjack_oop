@@ -1,28 +1,34 @@
 #ifndef CARDSET_H
 #define CARDSET_H
 
+#include <QGraphicsView>
 #include <QObject>
 #include "board.h"
+#include "cardpic.h"
+#include "game.h"
+
+using namespace std;
 
 class CardSet : public QObject
 {
     Q_OBJECT
 public:
-    explicit CardSet(QObject *parent = nullptr);
+    CardSet(QGraphicsScene *scene, QObject *parent = nullptr);
 
-    std::vector<Card> get_cards_() { return cards_; }
-    void add_card(Card c) { cards_.push_back(c); }
-    void remove_card(Card c);
+    std::vector<cardPic*> get_cards_pics_() { return cardPics_; }
+    void add_card(Card *c);
+    void remove_card(Card *c);
 
     int get_bet_amount_() { return bet_amount_; }
     void double_bet_amount() { bet_amount_ *= 2; }
-
-private slots:
-    std::vector<CardSet> get_split_cardset();
+    CardSet *split_cardset();
 
 private:
-    std::vector<Card> cards_;
+    double x_;
+    double y_;
+    vector<cardPic*> cardPics_;
     int bet_amount_;
+    QGraphicsScene *scene_;
 
 };
 

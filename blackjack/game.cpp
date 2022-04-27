@@ -21,8 +21,10 @@ Game::Game(QWidget *parent)
     c->deck_=1;
     c->suit_=Suit::Club;
     c->value_=2;
-    cardPic* p=new cardPic(c);
-    scene_->addItem(p);
+    CardSet* cs=new CardSet(scene_);
+    cs->add_card(c);
+    cs->add_card(c);
+//    scene_->addItem(p);
 
 
 }
