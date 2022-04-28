@@ -37,5 +37,4 @@ private:
     QGraphicsScene *scene_;
 
 };
-
 #endif // CARDSET_H

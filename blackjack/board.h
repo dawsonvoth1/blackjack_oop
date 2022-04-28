@@ -11,10 +11,8 @@ class Board : public QObject
 public:
     explicit Board(QObject *parent = nullptr);
 
-    std::vector<Card> get_dealers_cards() { return dealers_cards_; }
-    void clear_dealer_cards() { dealers_cards_.clear(); }
     std::vector<Card> get_cards() { return cards_; }
-    void clear_cards() { dealers_cards_.clear(); cards_.clear(); }
+    void clear_cards() { cards_.clear(); }
 
     int get_count() { return count_; }
 
@@ -23,7 +21,6 @@ public:
 
 
 private:
-    std::vector<Card> dealers_cards_;
     const int num_decks_ = 3;
     std::vector<Card> cards_;
     Card top_card_;
