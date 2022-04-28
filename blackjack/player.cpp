@@ -17,5 +17,16 @@ Player::Player(QGraphicsScene *scene, QObject *parent)
 
     QGraphicsRectItem *rec = scene_->addRect(x_, y_, width_, height_,p, b);
 
+    //create an empty card set
+    CardSet* set = new CardSet(scene);
+    this->add_card_set(set);
 
+}
+
+Dealer::Dealer(QGraphicsScene *scene, QObject *parent)
+    : Player(scene)
+{
+    //create an empty card set
+    CardSet* set = new CardSet(scene);
+    this->add_card_set(set);
 }

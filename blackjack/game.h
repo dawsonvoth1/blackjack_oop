@@ -23,23 +23,31 @@ public:
 
     std::vector<Player*> get_players() { return players_; }
     void add_player(Player* p) { players_.push_back(p); }
-    // MARK - TODO
     void remove_player(Player* p);
+
+    Player* get_current_player_() { return current_player_; }
+    void set_current_player_(Player* p) { current_player_ = p; }
+
     QGraphicsScene *get_scene(){return scene_;};
 
 private slots:
     void deal();
 
-    void takeTurn(Player* p);
-    void hit(Player* p);
-    void double_bet(Player* p);
-    void stay(Player *p);
-    void quit(Player *p);
-    void addMoney(Player *p);
+    void takeTurn();
+    void bet();
+    void hit();
+    void double_bet();
+    void stay();
+    void quit();
+    void addMoney();
+
+    void redo_turn();
+    void insure_turn();
 
     void exit();
 
 private:
+    Player* current_player_;
     const int add_money_amnt = 10;
     std::vector<Player*> players_;
     Player* curr_player_;
