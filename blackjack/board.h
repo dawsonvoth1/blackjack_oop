@@ -14,12 +14,13 @@ public:
     std::vector<Card> get_dealers_cards() { return dealers_cards_; }
     void clear_dealer_cards() { dealers_cards_.clear(); }
     std::vector<Card> get_cards() { return cards_; }
+    void clear_cards() { dealers_cards_.clear(); cards_.clear(); }
 
     int get_count() { return count_; }
 
     void shuffle_cards();
-    //MARK - TODO
     Card deal_next_card();
+
 
 private:
     std::vector<Card> dealers_cards_;
@@ -27,7 +28,6 @@ private:
     std::vector<Card> cards_;
     Card top_card_;
     int count_;
-signals:
 
 };
 

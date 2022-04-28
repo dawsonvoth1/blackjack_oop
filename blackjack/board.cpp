@@ -1,4 +1,5 @@
 #include "board.h"
+#include "game.h"
 #include <random>
 
 Board::Board(QObject *parent)
@@ -53,4 +54,14 @@ void Board::shuffle_cards() {
     // begin shuffle of cards_ vector
     auto rng = std::default_random_engine {};
     std::shuffle(std::begin(cards_), std::end(cards_), rng);
+}
+
+/**
+ * @brief Board::deal_next_card calls on the deck to deal the next card
+ * @return the first card of the top
+ */
+Card Board::deal_next_card() {
+    Card c = cards_.back();
+    cards_.pop_back();
+    return c;
 }
