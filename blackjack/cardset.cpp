@@ -41,7 +41,7 @@ vector<int> CardSet::minChips(int bet_amount){
     return res;
 }
 
-void CardSet::set_bet_cips(int bet_amount){
+void CardSet::set_bet_chips(int bet_amount){
     bet_chips_.clear();
     bet_amount_=bet_amount;
     vector<int> res=minChips(bet_amount);
@@ -52,6 +52,20 @@ void CardSet::set_bet_cips(int bet_amount){
         nc->setPos(x, y_);
         scene_->addItem(nc);
     }
+}
+
+/**
+ * @brief CardSet::split_cardset splits the cardset into two cardsets
+ * @return two card sets with the same bets
+ */
+ std::tuple<CardSet*, CardSet*> CardSet::split_cardset() {
+    Card* c = cardPics_.front()->get_card();
+    //remove from current CardSet
+    remove_card(c);
+    CardSet* set1 = new CardSet(this->scene_);
+    set1->set_bet_amount(this->get_bet_amount_());
+    set1->add_card(c);
+    return std::make_tuple(set1, this);
 }
 
 

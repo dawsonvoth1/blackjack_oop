@@ -62,5 +62,9 @@ void Board::shuffle_cards() {
 Card Board::deal_next_card() {
     Card c = cards_.back();
     cards_.pop_back();
+    //make sure
+    if (cards_.size() == 0) {
+        shuffle_cards();
+    }
     return c;
 }

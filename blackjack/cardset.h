@@ -21,12 +21,13 @@ public:
     void remove_card(Card *c);
 
     vector<int> minChips(int bet_amount);
-    void set_bet_cips(int bet_amount);
+    void set_bet_chips(int bet_amount);
 //    void add_chip(int value);
 
     int get_bet_amount_() { return bet_amount_; }
+    int set_bet_amount(int amnt) { bet_amount_ = amnt; }
     void double_bet_amount() { bet_amount_ *= 2; }
-    CardSet *split_cardset();
+    std::tuple<CardSet*, CardSet*> split_cardset();
 
 private:
     double x_;

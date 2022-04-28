@@ -1,5 +1,7 @@
 #include "game.h"
 #include "ui_game.h"//.h"
+#include <iostream>
+#include <QMessageBox>
 
 Game::Game(QWidget *parent)
     : QMainWindow(parent)
@@ -14,20 +16,29 @@ Game::Game(QWidget *parent)
     view_->setSceneRect(0,0,view_->frameSize().width(),view_->frameSize().height());
     // make an outline
     scene_->addRect(0, 0, view_->frameSize().width(), view_->frameSize().height());
-    Card *c=new Card;
-    c->dealt_=false;
-    c->deck_=1;
-    c->suit_=Suit::Club;
-    c->value_=2;
-    CardSet* cs=new CardSet(scene_);
-    cs->add_card(c);
-    cs->add_card(c);
-    cs->set_bet_cips(74630);
-    Player *p1=new Player(scene_);
-    players_.push_back(p1);
-//    scene_->addItem(p);
+    //Create Board Instance
+    board_ = new Board();
 
+    //connect buttons
+     connect(ui->hitpushButton, &QAbstractButton::clicked, this, &Game::hit);
+     connect(ui->doublepushButton, &QAbstractButton::clicked, this, &Game::double_bet);
+     connect(ui->staypushButton, &QAbstractButton::clicked, this, &Game::stay);
+     connect(ui->betpushButton, &QAbstractButton::clicked, this, &Game::bet);
+     connect(ui->quitpushButton, &QAbstractButton::clicked, this, &Game::quit);
+     connect(ui->redopushButton, &QAbstractButton::clicked, this, &Game::redo_turn);
+     connect(ui->addMoneypushButton, &QAbstractButton::clicked, this, &Game::addMoney);
+     connect(ui->insureTurnpushButton, &QAbstractButton::clicked, this, &Game::insure_turn);
+     connect(ui->dealpushButton, &QAbstractButton::clicked, this, &Game::deal);
+     connect(ui->exitpushButton, &QAbstractButton::clicked, this, &Game::exit);
+    //TODO: Add Player
 
+    Player* p = new Player(scene_);
+    players_.push_back(p);
+    set_current_player_(players_.at(0));
+
+    //Add Dealer
+    Player* dealer = new Dealer(scene_);
+    players_.push_back(dealer);
 }
 
 Game::~Game()
@@ -37,7 +48,6 @@ Game::~Game()
 
 /**
  * @brief Game::remove_player remove a player from the players_ vector
- * @param p the player to remove
  */
 void Game::remove_player(Player* p) {
     std::vector<Player*>::iterator position = std::find(players_.begin(), players_.end(), p);
@@ -50,61 +60,115 @@ void Game::remove_player(Player* p) {
  * @brief Game::deal deal cards to players
  */
 void Game::deal() {
+    //give two cards to each player
+    for (int i = 0; i < players_.size(); i++) {
+        std::vector<CardSet *> user_sets = players_.at(i)->get_card_sets();
+        for (int j = 0; j < user_sets.size(); j++) {
+            Card one = board_->deal_next_card();
+            Card two = board_->deal_next_card();
 
+            user_sets.at(j)->add_card(&one);
+            user_sets.at(j)->add_card(&two);
+        }
+    }
+    ui->dealpushButton->setEnabled(false);
 }
 
 /**
  * @brief Game::takeTurn player takes a turn
- * @param p the player
  */
-void Game::takeTurn(Player* p) {
+void Game::takeTurn() {
 
+}
+
+/**
+ * @brief Game::bet bets a certain amount
+ */
+void Game::bet() {
+    int betamnt = ui->inputBetlineEdit->text().toInt();
+    if (betamnt <= current_player_->get_money()) {
+        for (int i = 0; i < current_player_->get_card_sets().size(); i++) {
+            current_player_->get_card_sets().at(i)->set_bet_amount(betamnt);
+            current_player_->remove_money(betamnt);
+        }
+    } else {
+        //not enough money to bet
+        QMessageBox::information(
+            this,
+            tr("Please Check Your Balance"),
+            tr("You do not have enough money to bet that.") );
+    }
+
+    ui->betpushButton->setEnabled(false);
 }
 
 /**
  * @brief Game::hit the player hits
- * @param p the player
  */
 
-void Game::hit(Player* p) {
-
+void Game::hit() {
+    if (current_player_->get_card_sets().size() > 1) {
+        for (int i = 0; i < current_player_->get_card_sets().size(); i++) {
+            Card newCard = board_->deal_next_card();
+            current_player_->get_card_sets().at(i)->add_card(&newCard);
+        }
+    } else {
+        Card newCard = board_->deal_next_card();
+        current_player_->get_card_sets().at(0)->add_card(&newCard);
+    }
 }
 
 /**
  * @brief Game::double_bet double a bet into two separate bets
- * @param p the player
  */
-void Game::double_bet(Player* p) {
+void Game::double_bet() {
+    CardSet* temp = current_player_->get_card_sets().at(0);
+    current_player_->clear_card_sets();
+    auto split_sets = temp->split_cardset();
+    current_player_->add_card_set(std::get<0>(split_sets));
+    current_player_->add_card_set(std::get<1>(split_sets));
 
+    ui->doublepushButton->setEnabled(false);
 }
 
 /**
  * @brief Game::stay player chooses to stay
- * @param p the player
  */
-void Game::stay(Player *p) {
-
+void Game::stay() {
+//do nothing?
 }
 
 /**
  * @brief Game::quit the player chooses to quit
- * @param p the player
  */
-void Game::quit(Player *p) {
-
+void Game::quit() {
+// quit game?
 }
 
 /**
  * @brief Game::addMoney the player chooses to add money
- * @param p the player
  */
-void Game::addMoney(Player *p) {
-    p->add_money(add_money_amnt);
+void Game::addMoney() {
+    get_current_player_()->add_money(add_money_amnt);
+}
+
+/**
+ * @brief Game::redo_turn redo the current turn (POWER UP)
+ */
+void Game::redo_turn() {
+
+}
+
+/**
+ * @brief Game::insure_turn insure the current turn
+ */
+void Game::insure_turn() {
+
 }
 
 /**
  * @brief Game::exit the player chooses to exit
  */
 void Game::exit() {
-
+    close();
 }

@@ -26,7 +26,7 @@ private:
     double width_;
     double height_;
     QString name_;
-    int money_;
+    int money_ = 100;
     std::vector<CardSet*> card_sets_;
     QGraphicsScene *scene_;
 };
