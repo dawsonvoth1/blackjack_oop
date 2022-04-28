@@ -1,5 +1,4 @@
 #include "board.h"
-#include "game.h"
 #include <random>
 
 Board::Board(QObject *parent)
