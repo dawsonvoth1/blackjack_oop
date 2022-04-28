@@ -3,18 +3,7 @@
 
 #include <QColor>
 #include <QObject>
-
-
-// Card Suits
-enum class Suit {Heart, Diamond, Spade, Club};
-
-// Playing Card Struct
-struct Card {
-    int value_;
-    Suit suit_;
-    int deck_;
-    bool dealt_;
-};
+#include "cardset.h"
 
 class Board : public QObject
 {

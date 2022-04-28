@@ -9,17 +9,16 @@
 #include <QString>
 #include <QDir>
 
-#include <board.h>
-//// Card Suits
-//enum class Suit {Heart, Diamond, Spade, Club};
+// Card Suits
+enum class Suit {Heart, Diamond, Spade, Club};
 
-//// Playing Card Struct
-//struct Card {
-//    int value_;
-//    Suit suit_;
-//    int deck_;
-//    bool dealt_;
-//};
+// Playing Card Struct
+struct Card {
+    int value_;
+    Suit suit_;
+    int deck_;
+    bool dealt_;
+};
 
 class cardPic : public QObject, public QGraphicsPixmapItem
 {

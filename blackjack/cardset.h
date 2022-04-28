@@ -3,12 +3,12 @@
 
 #include <QGraphicsView>
 #include <QObject>
-#include "board.h"
 #include "cardpic.h"
 #include "chip.h"
 #include <vector>
 
 using namespace std;
+
 
 class CardSet : public QObject
 {
