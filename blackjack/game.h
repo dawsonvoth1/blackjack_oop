@@ -5,8 +5,9 @@
 #include <QMainWindow>
 #include "player.h"
 #include "board.h"
-#include "cardpic.h"
-#include "cardset.h"
+//#include "cardpic.h"
+//#include "cardset.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Game; }
@@ -41,6 +42,7 @@ private slots:
 private:
     const int add_money_amnt = 10;
     std::vector<Player*> players_;
+    Player* curr_player_;
     Board *board_;
     Ui::Game *ui;
     QGraphicsView* view_;

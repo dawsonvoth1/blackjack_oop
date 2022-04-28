@@ -1,6 +1,4 @@
 #include "cardset.h"
-#include "board.h"
-#include "vector"
 
 CardSet::CardSet(QGraphicsScene *scene, QObject *parent)
     :  QObject{parent}
@@ -25,6 +23,41 @@ void CardSet::add_card(Card *c){
     int vec_size=cardPics_.size();
     cardPics_.push_back(tmp);
     qreal x=x_+vec_size*40;
-    tmp->setPos(x, y_);
+    qreal y=y_+150;
+    tmp->setPos(x, y);
     scene_->addItem(tmp);
 }
+
+
+vector<int> CardSet::minChips(int bet_amount){
+    int chip_values[11]={10000,5000,2000,1000,500,250,200,100,50,20,10};
+    vector<int> res;
+    for(int i=0; i<11; i++){
+        while(chip_values[i] <= bet_amount){
+            bet_amount = bet_amount - chip_values[i];
+            res.push_back(chip_values[i]);
+        }
+    }
+    return res;
+}
+
+void CardSet::set_bet_cips(int bet_amount){
+    bet_chips_.clear();
+    bet_amount_=bet_amount;
+    vector<int> res=minChips(bet_amount);
+    for(int i=0; i<res.size(); i++){
+        Chip *nc=new Chip(res[i]);
+        bet_chips_.push_back(nc);
+        qreal x=x_+i*10;
+        nc->setPos(x, y_);
+        scene_->addItem(nc);
+    }
+}
+
+
+
+
+
+
+
+

@@ -4,11 +4,6 @@
 #include <QColor>
 #include <QObject>
 
-// Betting Chip struct
-struct Chip {
-    QColor color_;
-    int value_;
-};
 
 // Card Suits
 enum class Suit {Heart, Diamond, Spade, Club};

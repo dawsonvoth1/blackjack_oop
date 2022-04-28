@@ -12,6 +12,7 @@ SOURCES += \
     board.cpp \
     cardpic.cpp \
     cardset.cpp \
+    chip.cpp \
     game.cpp \
     main.cpp \
     player.cpp
@@ -20,6 +21,7 @@ HEADERS += \
     board.h \
     cardpic.h \
     cardset.h \
+    chip.h \
     game.h \
     player.h
 

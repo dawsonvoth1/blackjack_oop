@@ -1,7 +1,5 @@
 #include "game.h"
 #include "ui_game.h"//.h"
-#include "player.h"
-#include "vector"
 
 Game::Game(QWidget *parent)
     : QMainWindow(parent)
@@ -24,6 +22,9 @@ Game::Game(QWidget *parent)
     CardSet* cs=new CardSet(scene_);
     cs->add_card(c);
     cs->add_card(c);
+    cs->set_bet_cips(74630);
+    Player *p1=new Player(scene_);
+    players_.push_back(p1);
 //    scene_->addItem(p);
 
 
