@@ -22,7 +22,6 @@ public:
     ~Game();
 
     std::vector<Player*> get_players() { return players_; }
-    void add_player(Player* p) { players_.push_back(p); }
     void remove_player(Player* p);
 
     Player* get_current_player_() { return current_player_; }
@@ -40,6 +39,7 @@ private slots:
     void stay();
     void quit();
     void addMoney();
+    void add_player();
 
     void redo_turn();
     void insure_turn();

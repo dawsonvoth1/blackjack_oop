@@ -177,24 +177,11 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="currentPlayerlabel">
-    <property name="geometry">
-     <rect>
-      <x>1010</x>
-      <y>260</y>
-      <width>141</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Current Player Label</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="notificationlabel">
     <property name="geometry">
      <rect>
-      <x>1010</x>
-      <y>390</y>
+      <x>990</x>
+      <y>410</y>
       <width>261</width>
       <height>31</height>
      </rect>
