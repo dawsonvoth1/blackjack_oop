@@ -20,7 +20,6 @@ Player::Player(QGraphicsScene *scene, QObject *parent)
     //create an empty card set
     CardSet* set = new CardSet(scene);
     this->add_card_set(set);
-
 }
 
 Dealer::Dealer(QGraphicsScene *scene, QObject *parent)

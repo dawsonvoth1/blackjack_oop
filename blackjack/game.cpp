@@ -30,15 +30,32 @@ Game::Game(QWidget *parent)
      connect(ui->insureTurnpushButton, &QAbstractButton::clicked, this, &Game::insure_turn);
      connect(ui->dealpushButton, &QAbstractButton::clicked, this, &Game::deal);
      connect(ui->exitpushButton, &QAbstractButton::clicked, this, &Game::exit);
-    //TODO: Add Player
+     connect(ui->addPlayerpushButton, &QAbstractButton::clicked, this, &Game::add_player);
 
-    Player* p = new Player(scene_);
-    players_.push_back(p);
+     //disable buttons before choosing players
+     ui->hitpushButton->setEnabled(false);
+     ui->doublepushButton->setEnabled(false);
+     ui->staypushButton->setEnabled(false);
+     ui->betpushButton->setEnabled(false);
+     ui->redopushButton->setEnabled(false);
+     ui->insureTurnpushButton->setEnabled(false);
+     // add players + dealer
+     ui->notificationlabel->setText("Add more players to the game or Deal");
+
+    //start with one player
+    add_player();
     set_current_player_(players_.at(0));
 
     //Add Dealer
     Player* dealer = new Dealer(scene_);
     players_.push_back(dealer);
+
+     //set up game
+     //set turn to be first player
+     set_current_player_(players_.at(0));
+
+     // execute game
+
 }
 
 Game::~Game()
@@ -60,6 +77,7 @@ void Game::remove_player(Player* p) {
  * @brief Game::deal deal cards to players
  */
 void Game::deal() {
+    ui->addPlayerpushButton->setEnabled(false);
     //give two cards to each player
     for (int i = 0; i < players_.size(); i++) {
         std::vector<CardSet *> user_sets = players_.at(i)->get_card_sets();
@@ -78,6 +96,7 @@ void Game::deal() {
  * @brief Game::takeTurn player takes a turn
  */
 void Game::takeTurn() {
+    // make a player take a turn
 
 }
 
@@ -98,8 +117,6 @@ void Game::bet() {
             tr("Please Check Your Balance"),
             tr("You do not have enough money to bet that.") );
     }
-
-    ui->betpushButton->setEnabled(false);
 }
 
 /**
@@ -138,6 +155,14 @@ void Game::stay() {
 //do nothing?
 }
 
+/**
+ * @brief Game::add_player add player to the players vector
+ */
+void Game::add_player() {
+    Player* p = new Player(scene_);
+    p->set_name("Player " + QString::number(players_.size() + 1));
+    players_.push_back(p);
+}
 /**
  * @brief Game::quit the player chooses to quit
  */

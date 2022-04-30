@@ -20,6 +20,9 @@ public:
     void add_card_set(CardSet* c) { card_sets_.push_back(c); }
     void clear_card_sets() { card_sets_.clear(); }
 
+    QString get_name() { return name_; }
+    void set_name(QString name) { name_ = name; }
+
 private:
     double x_;
     double y_;
@@ -40,6 +43,8 @@ public:
     void add_card_set(CardSet* c) { card_sets_.push_back(c); }
     void clear_card_sets() { card_sets_.clear(); }
 
+     QString get_name() { return name_; }
+
     int get_hitline_() { return hitline_; }
     void set_hitline_(int amnt) { hitline_ = amnt; }
 
@@ -52,6 +57,7 @@ private:
     double y_;
     double width_;
     double height_;
+    const QString name_ = "Dealer";
     std::vector<CardSet*> card_sets_;
     QGraphicsScene *scene_;
 };
