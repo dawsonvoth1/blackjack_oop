@@ -27,12 +27,14 @@ public:
     Player* get_current_player_() { return current_player_; }
     void set_current_player_(Player* p) { current_player_ = p; }
 
-    QGraphicsScene *get_scene(){return scene_;};
+    QGraphicsScene *get_scene(){ return scene_; };
+
+    void rotate_current_player();
+
 
 private slots:
     void deal();
 
-    void takeTurn();
     void bet();
     void hit();
     void double_bet();
@@ -50,7 +52,6 @@ private:
     Player* current_player_;
     const int add_money_amnt = 10;
     std::vector<Player*> players_;
-    Player* curr_player_;
     Board *board_;
     Ui::Game *ui;
     QGraphicsView* view_;
