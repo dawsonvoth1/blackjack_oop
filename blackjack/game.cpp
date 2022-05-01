@@ -32,30 +32,6 @@ Game::Game(QWidget *parent)
      connect(ui->exitpushButton, &QAbstractButton::clicked, this, &Game::exit);
      connect(ui->addPlayerpushButton, &QAbstractButton::clicked, this, &Game::add_player);
 
-     //disable buttons before choosing players
-     ui->hitpushButton->setEnabled(false);
-     ui->doublepushButton->setEnabled(false);
-     ui->staypushButton->setEnabled(false);
-     ui->betpushButton->setEnabled(false);
-     ui->redopushButton->setEnabled(false);
-     ui->insureTurnpushButton->setEnabled(false);
-     // add players + dealer
-     ui->notificationlabel->setText("Add more players to the game or Deal");
-
-    //start with one player
-    add_player();
-    set_current_player_(players_.at(0));
-
-    //Add Dealer
-    Player* dealer = new Dealer(scene_);
-    players_.push_back(dealer);
-
-     //set up game
-     //set turn to be first player
-     set_current_player_(players_.at(0));
-
-     // execute game
-
 }
 
 Game::~Game()
@@ -77,7 +53,6 @@ void Game::remove_player(Player* p) {
  * @brief Game::deal deal cards to players
  */
 void Game::deal() {
-    ui->addPlayerpushButton->setEnabled(false);
     //give two cards to each player
     for (int i = 0; i < players_.size(); i++) {
         std::vector<CardSet *> user_sets = players_.at(i)->get_card_sets();
@@ -89,15 +64,6 @@ void Game::deal() {
             user_sets.at(j)->add_card(&two);
         }
     }
-    ui->dealpushButton->setEnabled(false);
-}
-
-/**
- * @brief Game::takeTurn player takes a turn
- */
-void Game::takeTurn() {
-    // make a player take a turn
-
 }
 
 /**
@@ -144,15 +110,13 @@ void Game::double_bet() {
     auto split_sets = temp->split_cardset();
     current_player_->add_card_set(std::get<0>(split_sets));
     current_player_->add_card_set(std::get<1>(split_sets));
-
-    ui->doublepushButton->setEnabled(false);
 }
 
 /**
  * @brief Game::stay player chooses to stay
  */
 void Game::stay() {
-//do nothing?
+
 }
 
 /**
@@ -168,6 +132,7 @@ void Game::add_player() {
  */
 void Game::quit() {
 // quit game?
+    remove_player(current_player_);
 }
 
 /**
@@ -181,14 +146,24 @@ void Game::addMoney() {
  * @brief Game::redo_turn redo the current turn (POWER UP)
  */
 void Game::redo_turn() {
-
+    //clear current player's card sets
+    for (int i = 0; i < current_player_->get_card_sets().size(); i++) {
+        for (int j = 0; j < current_player_->get_card_sets().at(i)->get_cards_pics_().size(); i++) {
+            current_player_->get_card_sets().at(i)->remove_card(current_player_->get_card_sets().at(i)->get_cards_pics_().at(j)->get_card());
+        }
+    }
+    ui->redopushButton->setEnabled(false);
 }
 
 /**
  * @brief Game::insure_turn insure the current turn
  */
 void Game::insure_turn() {
-
+    //insure turn by simply adding money back into their account
+    for (int i = 0; i < current_player_->get_card_sets().size(); i++) {
+        current_player_->add_money(current_player_->get_card_sets().at(i)->get_bet_amount_());
+    }
+    ui->insureTurnpushButton->setEnabled(false);
 }
 
 /**
