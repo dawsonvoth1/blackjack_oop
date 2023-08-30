@@ -1,6 +1,6 @@
 #include "player.h"
 
-Player::Player(QGraphicsScene *scene, QObject *parent)
+Player::Player(QGraphicsScene *scene, int player_num, QObject *parent)
     : QObject{parent}
 {
     scene_=scene;
@@ -9,8 +9,8 @@ Player::Player(QGraphicsScene *scene, QObject *parent)
 
     QPen p(c1);
     QBrush b(c2, Qt::LinearGradientPattern);
-
-    x_=0;
+    player_num_=player_num;
+    x_=player_num_*250;
     y_=350;
     width_=200;
     height_=50;
@@ -18,14 +18,14 @@ Player::Player(QGraphicsScene *scene, QObject *parent)
     QGraphicsRectItem *rec = scene_->addRect(x_, y_, width_, height_,p, b);
 
     //create an empty card set
-    CardSet* set = new CardSet(scene);
+    CardSet* set = new CardSet(scene, player_num_);
     this->add_card_set(set);
 }
 
-Dealer::Dealer(QGraphicsScene *scene, QObject *parent)
-    : Player(scene)
-{
-    //create an empty card set
-    CardSet* set = new CardSet(scene);
-    this->add_card_set(set);
-}
+//Dealer::Dealer(QGraphicsScene *scene,, QObject *parent)
+//    : Player(scene)
+//{
+//    //create an empty card set
+//    CardSet* set = new CardSet(scene);
+//    this->add_card_set(set);
+//}

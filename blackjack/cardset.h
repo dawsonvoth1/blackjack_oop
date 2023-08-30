@@ -14,7 +14,7 @@ class CardSet : public QObject
 {
     Q_OBJECT
 public:
-    CardSet(QGraphicsScene *scene, QObject *parent = nullptr);
+    CardSet(QGraphicsScene *scene, int player_num, QObject *parent = nullptr);
 
     std::vector<cardPic*> get_cards_pics_() { return cardPics_; }
     void add_card(Card *c);
@@ -30,6 +30,7 @@ public:
     std::tuple<CardSet*, CardSet*> split_cardset();
 
 private:
+    int player_num_;
     double x_;
     double y_;
     vector<cardPic*> cardPics_;

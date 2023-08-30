@@ -1,9 +1,12 @@
 #include "cardset.h"
 
-CardSet::CardSet(QGraphicsScene *scene, QObject *parent)
+CardSet::CardSet(QGraphicsScene *scene, int player_num, QObject *parent)
     :  QObject{parent}
 {
     scene_=scene;
+    player_num_=player_num;
+    y_=0;
+    x_=player_num_*250;
 }
 
 /**
@@ -62,7 +65,7 @@ void CardSet::set_bet_chips(int bet_amount){
     Card* c = cardPics_.front()->get_card();
     //remove from current CardSet
     remove_card(c);
-    CardSet* set1 = new CardSet(this->scene_);
+    CardSet* set1 = new CardSet(this->scene_, player_num_);
     set1->set_bet_amount(this->get_bet_amount_());
     set1->add_card(c);
     return std::make_tuple(set1, this);

@@ -55,7 +55,7 @@ void Game::remove_player(Player* p) {
 void Game::deal() {
     //give two cards to each player
     for (int i = 0; i < players_.size(); i++) {
-        std::vector<CardSet *> user_sets = players_.at(i)->get_card_sets();
+        std::vector<CardSet *> user_sets = players_[i]->get_card_sets();
         for (int j = 0; j < user_sets.size(); j++) {
             Card one = board_->deal_next_card();
             Card two = board_->deal_next_card();
@@ -73,7 +73,8 @@ void Game::bet() {
     int betamnt = ui->inputBetlineEdit->text().toInt();
     if (betamnt <= current_player_->get_money()) {
         for (int i = 0; i < current_player_->get_card_sets().size(); i++) {
-            current_player_->get_card_sets().at(i)->set_bet_amount(betamnt);
+            current_player_->get_card_sets()[i]->set_bet_amount(betamnt);
+            current_player_->get_card_sets()[i]->set_bet_chips(betamnt);
             current_player_->remove_money(betamnt);
         }
     } else {
@@ -123,9 +124,10 @@ void Game::stay() {
  * @brief Game::add_player add player to the players vector
  */
 void Game::add_player() {
-    Player* p = new Player(scene_);
-    p->set_name("Player " + QString::number(players_.size() + 1));
+    Player* p = new Player(scene_, players_.size());
+    p->set_name("Player " + QString::number(players_.size()));
     players_.push_back(p);
+    current_player_=p;
 }
 /**
  * @brief Game::quit the player chooses to quit
